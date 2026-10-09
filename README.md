@@ -1,26 +1,41 @@
-# Loop
+# Relay: preserving club knowledge across handoffs
 
-Loop is a live campus event map for MIT students. It brings event discovery, social interest, and current event information into one place so that students can more easily move from hearing about an event to actually attending it.
+Relay helps student clubs preserve recurring procedures and the context behind them, so incoming officers can understand inherited work and reconsider it when circumstances change.
 
-This repository contains the design and implementation of my 6.1040 Personal Project.
+This README is the entry point to the complete design submission. Each section links to its full design document or prototype.
 
-## P1: Design
+## Problem framing and stakeholders
 
-The complete P1 design submission is available here:
+See [Problem framing](./problem-framing.md) for the domain, stakeholder needs, observed handoff problems, and the opportunity Relay addresses.
 
-- [Design document](design.md)
+## Application pitch
 
-The design document includes:
+See the [Application pitch](./application-pitch.md) for Relay's Quick Playbooks, optional Context Notes, and Change Check features.
 
-- Problem framing and stakeholders
-- Application pitch
-- Concept specifications
-- Essential reactions
-- Explanation of concept roles
-- UI sketches
-- User journey
+## Concept specifications, essential reactions, and concept roles
 
-## UI Sketches
+The [Concept design](./concept-design.md) contains the complete concept specifications, essential reactions connecting them, and the explanation of each concept's role in Relay.
 
-The low-fidelity interface sketches are stored in [`sketches/`](sketches/).
+## UI sketches
 
+The four low-fidelity UI sketches are shown below:
+
+### Fig. 1. Club workspace / Playbooks
+
+![Fig. 1: Relay club workspace / Playbooks](./club-workspace.png)
+
+### Fig. 2. Playbook detail
+
+![Fig. 2: Relay playbook detail](./playbook-detail.png)
+
+### Fig. 3. Changing a Context Note
+
+![Fig. 3: Relay changing a Context Note](./context-change.png)
+
+### Fig. 4. Reviewing an affected Playbook
+
+![Fig. 4: Relay review of an affected Playbook](./review-playbook.png)
+
+## User journey
+
+See the [User journey](./user-journey.md) for Tiya's path from inheriting a playbook, to recording changed shared context, to reviewing the procedure that depends on it.
