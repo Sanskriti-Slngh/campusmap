@@ -4,19 +4,20 @@ In the Relay interface, users see a **Playbook**; in the formal concept specific
 
 The hard part of Relay is not storing a procedure. It is handling the moment when one piece of context changes and several inherited procedures may suddenly be wrong.
 
-Suppose three club procedures all rely on the same fact: **storage space must be renewed annually**. If that rule changes, an officer should not have to remember every place where the old assumption was used. Relay keeps the procedure, its shared context, and the act of reconsidering it separate:
+Suppose several club procedures rely on the same fact: **MIT event spaces only need to be renewed once per academic year**. When the rule changes to semester renewals, an officer should not have to remember every procedure that relied on the old assumption. Relay keeps the procedure, its shared context, and the act of reconsidering it separate:
 
 ```text
-ContextNote: "Storage must be renewed annually"
-        |                    |
-        v                    v
-  Procedure A          Procedure B
-        \                /
-         \              /
-          -- context changes --
-                    |
-                    v
-             reviews requested
+ContextNote: "Renew once per academic year"
+        |                 |                    |
+        v                 v                    v
+Book Rehearsal     Competition          Officer Transition
+    Space          Registration              Checklist
+        \                 |                   /
+         \                |                  /
+          -- note changes to semester renewals --
+                           |
+                           v
+                    reviews requested
 ```
 
 That separation is the main design idea. Relay uses five concepts: **ProcedureMaintaining**, **ContextTracking**, **Questioning**, **Reviewing**, and **RoleBasedAccessing**. Each concept owns one course of action, and reactions provide the application-specific links between them.
@@ -824,6 +825,6 @@ For example, `ProcedureMaintaining.moveStep` still requires an active Step and P
 
 `RoleBasedAccessing` uses Relay users as `User`, club workspaces as `Resource`, and permissions such as `ASK_QUESTION`, `ANSWER_QUESTION`, `EDIT_PROCEDURE`, `EDIT_CONTEXT`, and `COMPLETE_REVIEW`. Both Member and Officer roles permit asking questions; only Officer permits answering questions or changing official knowledge. Role creation and role assignment are workspace administration, not ordinary member operations. Members and officers read Procedures and ContextNotes through state queries; those reads are not modeled as actions because they do not represent significant behavioral events.
 
-The difficult part of Relay is the stale-knowledge case shown at the start: **one piece of context is shared by several procedures and later changes**. A more tangled design could copy the context into every Procedure, add a `needsReview` flag to each one, and make ProcedureMaintaining responsible for deciding when that flag changes. Relay does not do that. `ContextTracking` records the dependency once and preserves each meaningful before/after change; `Reviewing` owns reconsideration and stores a set of generic causes per open review; one `ContextTracking.change -> Reviewing.request/addCause` reaction links them. The `correct`/`change` distinction further prevents a wording fix from creating unnecessary review work.
+The difficult part of Relay is the stale-knowledge case shown at the start: **one piece of context is shared by several procedures and later changes**. A more tangled design could copy the context into every Procedure, add a `needsReview` flag to each one, and make ProcedureMaintaining responsible for deciding when that flag changes. Relay does not do that. `ContextTracking` records the dependency once and preserves each meaningful before/after change; `Reviewing` owns reconsideration and stores a set of generic causes per open review. Two reactions—`ContextTracking.change -> Reviewing.request` and `ContextTracking.change -> Reviewing.addCause`—link them. The `correct`/`change` distinction further prevents a wording fix from creating unnecessary review work.
 
 Each `Review.causes` entry refers to an exact `ContextTracking.Change`, which in turn identifies the ContextNote and its before/after text. The reasons, changed notes, old text, and new text remain available to explain a Review without coupling `Reviewing` to context. If several facts change before an officer reviews a Procedure, Relay surfaces that Procedure once and retains every distinct cause. That choice of responsibilities keeps the difficult behavior small and traceable: **one or more shared facts change, and each dependent Procedure has one review with all of its reasons attached.**
