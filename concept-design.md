@@ -24,7 +24,7 @@ That separation is the main design idea. Relay uses five concepts: **ProcedureMa
 
 # UI Sketches
 
-These sketches are intentionally low fidelity: gray boxes, simple labels, and short callouts that explain the key behaviors without polishing the interface. They focus on the essential interactions that make Relay distinct: shared playbooks, context notes, questions, and review after a meaningful context change. The linked, multi-page Relay UI prototype includes the [Club workspace](./index.html), [Playbook detail](./playbook.html), [Context change](./context-change.html), and [Review](./review.html) screens.
+These sketches are intentionally low fidelity: gray boxes, simple labels, and short callouts that explain the key behaviors without polishing the interface. They focus on the essential interactions that make Relay distinct: shared Playbooks, Context Notes, Questions, and review after a meaningful context change. The four sketches below correspond to the club workspace, Playbook detail, Context change, and review views.
 
 ### Club workspace / Playbook list
 
