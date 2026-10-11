@@ -1,0 +1,23 @@
+{
+  "overrides": {
+    "bson": "7.2.0"
+  },
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.3.4",
+  "dependencies": {
+    "@mit-sdg/sync-engine": "1.1.0",
+    "@mit-sdg/sync-engine-http": "1.1.0",
+    "mongodb": "^7.7.0"
+  },
+  "devDependencies": {
+    "typescript": ">=6 <7",
+    "@types/bun": "^1.3.4",
+    "@types/node": "^24.0.0"
+  },
+  "scripts": {
+    "generate": "sync-engine artifacts pin",
+    "check": "sync-engine check && sync-engine artifacts check && tsc --noEmit",
+    "start": "bun src/main.ts"
+  }
+}
