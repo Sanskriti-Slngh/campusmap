@@ -22,19 +22,19 @@ The four low-fidelity UI sketches are shown below:
 
 ### Fig. 1. Club workspace / Playbooks
 
-![Fig. 1: Relay club workspace / Playbooks](./club-workspace.png)
+![Fig. 1: Relay club workspace / Playbooks](ui-sketches/club-workspace.png)
 
 ### Fig. 2. Playbook detail
 
-![Fig. 2: Relay playbook detail](./playbook-detail.png)
+![Fig. 2: Relay playbook detail](ui-sketches/playbook-detail.png)
 
 ### Fig. 3. Changing a Context Note
 
-![Fig. 3: Relay changing a Context Note](./context-change.png)
+![Fig. 3: Relay changing a Context Note](ui-sketches/context-change.png)
 
 ### Fig. 4. Reviewing an affected Playbook
 
-![Fig. 4: Relay review of an affected Playbook](./review-playbook.png)
+![Fig. 4: Relay review of an affected Playbook](ui-sketches/review-playbook.png)
 
 ## User journey
 

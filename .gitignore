@@ -1,6 +1,0 @@
-node_modules/
-*.tsbuildinfo
-*.log
-.env
-.env.*
-.DS_Store
